@@ -1,0 +1,91 @@
+<p>sample works!</p>
+<div class="container">
+    <h3>New Employee</h3>
+    <hr>
+
+    <form name="frmEmployee" #form="ngForm" autocomplete="off" (ngSubmit)="onSubmit(form)">
+
+
+        <div class="form-group">
+            <input type="text" readonly name="EmpId" [(ngModel)]="employeeService.formEmployeeData.EmpId" />
+        </div>
+        <div class="form-group">
+            <label>First Name</label>
+            <input type="text" name="FirstName" #FirstName="ngModel"
+                [(ngModel)]="employeeService.formEmployeeData.FirstName" class="form-control" maxlength="20"
+                minlength="3" required [ngClass]="{'is-invalid':FirstName.touched && FirstName.invalid}" />
+
+            <!-- validation -->
+            <div class="validation-error" *ngIf="FirstName.touched && FirstName.invalid">
+                <div style="color: red;" *ngIf="FirstName.errors.required">
+                    invalid name
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" name="LastName" #LastName="ngModel"
+                [(ngModel)]="employeeService.formEmployeeData.LastName" class="form-control" maxlength="20"
+                minlength="3" required [ngClass]="{'is-invalid':LastName.touched && LastName.invalid}" />
+
+            <!-- validation -->
+            <div class="validation-error" *ngIf="LastName.touched && LastName.invalid">
+                <div style="color: red;" *ngIf="LastName.errors.required">
+                    invalid name
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Department</label>
+            <select id="Department" #DeptNo="ngModel" name="Departement"
+                [(ngModel)]="employeeService.formEmployeeData.DeptNo" required class="form-control">
+                <option value="0" selected disabled>--SELECT DEPARTMENT--</option>
+                <option *ngFor="let d of this.departmentService.departments" value="{{d.DeptNo}}">{{d.DepartmentName}}
+                </option>
+            </select>
+            <!-- validation -->
+            <div class="validation-error" *ngIf="DeptNo.touched && DeptNo.invalid">
+                <div style="color: red;" *ngIf="DeptNo.errors.required">
+                    invalid name
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Employee Type</label>
+            <select id="EmployeeType" #EmployeeType="ngModel" name="EmployeeType"
+                [(ngModel)]="employeeService.formEmployeeData.EmployeeType" required class="form-control">
+                <option value="0" selected disabled>--SELECT Employee Type--</option>
+                <option value="Permanent">Permanent</option>
+                <option value="Contract">Contract</option>
+            </select>
+            <!-- validation -->
+            <div class="validation-error" *ngIf="EmployeeType.touched && EmployeeType.invalid">
+                <div style="color: red;" *ngIf="EmployeeType.errors.required">
+                    invalid name
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Date of Joining</label>
+            <input type="Date" name="DateOfJoining" #DateOfJoining="ngModel"
+                [(ngModel)]="employeeService.formEmployeeData.DateOfJoining" class="form-control" required
+                [ngClass]="{'is-invalid':DateOfJoining.touched && DateOfJoining.invalid}" />
+
+            <!-- validation -->
+            <div class="validation-error" *ngIf="DateOfJoining.touched && DateOfJoining.invalid">
+                <div style="color: red;" *ngIf="DateOfJoining.errors.required">
+                    invalid name
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class=" btn btn-lg btn-primary form-control" [disabled]!="form.invalid && form.dirty">
+                INSERT </button>
+        </div>
+    </form>
+</div>
