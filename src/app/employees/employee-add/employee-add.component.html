@@ -11,12 +11,15 @@
         <div class="form-group">
             <label>First Name</label>
             <input type="text" name="FirstName" #FirstName="ngModel"
-                [(ngModel)]="employeeService.formEmployeeData.FirstName" class="form-control" maxlength="20"
-                minlength="3" required [ngClass]="{'is-invalid': FirstName.touched && FirstName.invalid}" />
+                [(ngModel)]="employeeService.formEmployeeData.FirstName" class="form-control" pattern="^[A-Z][a-z]{2,24}$"
+                 required [ngClass]="{'is-invalid': FirstName.touched && FirstName.invalid}" />
 
             <!-- validation -->
             <div class="validation-error" *ngIf="FirstName.touched && FirstName.invalid">
                 <div style="color: red;" *ngIf="FirstName.errors.required">
+                    Name is required
+                </div>
+                <div style="color: red;" *ngIf="FirstName.errors?.pattern">
                     invalid name
                 </div>
             </div>
@@ -25,12 +28,15 @@
         <div class="form-group">
             <label>Last Name</label>
             <input type="text" name="LastName" #LastName="ngModel"
-                [(ngModel)]="employeeService.formEmployeeData.LastName" class="form-control" maxlength="20"
-                minlength="3" required [ngClass]="{'is-invalid': LastName.touched && LastName.invalid}" />
+                [(ngModel)]="employeeService.formEmployeeData.LastName" class="form-control" pattern="^[A-Z][a-zA-Z\s]{1,24}$" 
+                required [ngClass]="{'is-invalid': LastName.touched && LastName.invalid}" />
 
             <!-- validation -->
             <div class="validation-error" *ngIf="LastName.touched && LastName.invalid">
                 <div style="color: red;" *ngIf="LastName.errors.required">
+                    invalid name
+                </div>
+                <div style="color: red;" *ngIf="LastName.errors?.pattern">
                     invalid name
                 </div>
             </div>
@@ -39,7 +45,7 @@
         <div class="form-group">
             <label>Department</label>
             <select id="Department" #DeptNo="ngModel" name="Departement"
-                [(ngModel)]="employeeService.formEmployeeData.DeptNo" required class="form-control">
+                [(ngModel)]="employeeService.formEmployeeData.DeptNo" required class="btn btn-primary">
                 <option value="0" selected disabled>--SELECT DEPARTMENT--</option>
                 <option *ngFor="let d of this.departmentService.departments" value="{{d.DeptNo}}">{{d.DepartmentName}}
                 </option>
