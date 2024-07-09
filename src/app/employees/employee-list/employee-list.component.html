@@ -28,12 +28,12 @@
         <tbody>
             <tr *ngFor="let e of employeeService.employees | filter:searchTerm |
             paginate:{itemsPerPage:pageSize, currentPage: page}">
-                <td>{{e.EmpId}}</td>
-                <td>{{e.FirstName}}</td>
-                <td>{{e.LastName}}</td>
-                <td>{{e.DepartmentName}}</td>
-                <td>{{e.EmployeeType}}</td>
-                <td>{{e.DateOfJoining | date:"dd-MMM-yy"}}</td>
+                <td>{{e.empId}}</td>
+                <td>{{e.firstName}}</td>
+                <td>{{e.lastName}}</td>
+                <td>{{e.departmentName}}</td>
+                <td>{{e.employeeType}}</td>
+                <td>{{e.dateOfJoining | date:"dd-MMM-yy"}}</td>
             </tr>
         </tbody>
     </table>

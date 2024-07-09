@@ -11,8 +11,9 @@
         <div class="form-group">
             <label>First Name</label>
             <input type="text" name="FirstName" #FirstName="ngModel"
-                [(ngModel)]="employeeService.formEmployeeData.FirstName" class="form-control" pattern="^[A-Z][a-z]{2,24}$"
-                 required [ngClass]="{'is-invalid': FirstName.touched && FirstName.invalid}" />
+                [(ngModel)]="employeeService.formEmployeeData.FirstName" class="form-control"
+                pattern="^[A-Z][a-z]{2,24}$" required
+                [ngClass]="{'is-invalid': FirstName.touched && FirstName.invalid}" />
 
             <!-- validation -->
             <div class="validation-error" *ngIf="FirstName.touched && FirstName.invalid">
@@ -28,8 +29,9 @@
         <div class="form-group">
             <label>Last Name</label>
             <input type="text" name="LastName" #LastName="ngModel"
-                [(ngModel)]="employeeService.formEmployeeData.LastName" class="form-control" pattern="^[A-Z][a-zA-Z\s]{1,24}$" 
-                required [ngClass]="{'is-invalid': LastName.touched && LastName.invalid}" />
+                [(ngModel)]="employeeService.formEmployeeData.LastName" class="form-control"
+                pattern="^[A-Z][a-zA-Z\s]{1,24}$" required
+                [ngClass]="{'is-invalid': LastName.touched && LastName.invalid}" />
 
             <!-- validation -->
             <div class="validation-error" *ngIf="LastName.touched && LastName.invalid">
@@ -47,7 +49,7 @@
             <select id="Department" #DeptNo="ngModel" name="Departement"
                 [(ngModel)]="employeeService.formEmployeeData.DeptNo" required class="btn btn-primary">
                 <option value="0" selected disabled>--SELECT DEPARTMENT--</option>
-                <option *ngFor="let d of this.departmentService.departments" value="{{d.DeptNo}}">{{d.DepartmentName}}
+                <option *ngFor="let d of this.departmentService.departments" value="{{d.deptNo}}">{{d.departmentName}}
                 </option>
             </select>
             <!-- validation -->

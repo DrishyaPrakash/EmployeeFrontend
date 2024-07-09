@@ -23,8 +23,11 @@ export class EmployeeService {
     this.httpClient.get(environment.apiUrl + 'Employee')
       .toPromise()
       .then((response: any) => {
-        if (response && response.$values) {
-          this.employees = response.$values;
+        console.log(response)
+        if (response && response.value) {
+          console.log(response.value)
+          this.employees = response.value;
+          console.log(this.employees)
         }
         else {
           console.error('Invalid format' + response)

@@ -17,8 +17,8 @@ export class DepartmentService {
     this.httpClient.get(environment.apiUrl + 'Department')
       .toPromise()
       .then((response: any) => {
-        if (response && response.$values) {
-          this.departments = response.$values;
+        if (response && response.value) {
+          this.departments = response.value;
         }
         else {
           console.error('Invalid formate' + response)
